@@ -2,10 +2,14 @@ import { useEffect, useState } from 'react';
 import { Robot } from './components/robots/Robot';
 import { PartList } from './components/parts/PartList';
 import { Col, Container, Row } from 'react-bootstrap';
+import { useSelector, useDispatch } from 'react-redux';
+import { loadRobots } from './core/actions';
+import { selectRobots } from './core/selectors';
 
 function App() {
   const [robots, setRobots] = useState([]);
   const [parts, setParts] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function fetchData() {
@@ -16,11 +20,13 @@ function App() {
 
       const result = await resp.json();
       setRobots(result);
+      dispatch(loadRobots(result));
     }
     fetchData();
-  }, []);
+  }, [dispatch]);
 
-  console.log(parts);
+  const storedRobots = useSelector(selectRobots);
+  console.log(storedRobots);
 
   return (
     <div className="App">
