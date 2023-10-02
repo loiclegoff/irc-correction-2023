@@ -1,8 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Part } from './Part';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectSelectedParts } from '../../core/selectors';
+import { loadParts } from '../../core/actions';
 
-export function PartList(props) {
-  const [allParts, setAllParts] = useState([]);
+export function PartList() {
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function fetchData() {
@@ -12,19 +15,19 @@ export function PartList(props) {
       );
 
       const result = await resp.json();
-      setAllParts(result);
+      dispatch(loadParts(result));
     }
     fetchData();
-  }, []);
+  }, [dispatch]);
 
-  console.log(allParts);
+  const storedParts = useSelector(selectSelectedParts);
+  console.log(storedParts);
+
   return (
     <div>
-      {allParts
-        .filter((part) => props.parts.includes(part.id))
-        .map((part) => (
-          <Part key={part.id} part={part} />
-        ))}
+      {storedParts.map((part) => (
+        <Part key={part.id} part={part} />
+      ))}
     </div>
   );
 }

@@ -1,9 +1,12 @@
 import { Card } from 'react-bootstrap';
 import { Visual } from '../visual/Visual';
+import { useDispatch } from 'react-redux';
+import { selectParts } from '../../core/actions';
 
 export function Robot(props) {
+  const dispatch = useDispatch();
   function handleOnClick() {
-    props.onRobotSelected(props.parts);
+    dispatch(selectParts(props.parts));
   }
 
   return (

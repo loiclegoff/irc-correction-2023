@@ -7,8 +7,6 @@ import { loadRobots } from './core/actions';
 import { selectRobots } from './core/selectors';
 
 function App() {
-  const [robots, setRobots] = useState([]);
-  const [parts, setParts] = useState([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,14 +17,12 @@ function App() {
       );
 
       const result = await resp.json();
-      setRobots(result);
       dispatch(loadRobots(result));
     }
     fetchData();
   }, [dispatch]);
 
   const storedRobots = useSelector(selectRobots);
-  console.log(storedRobots);
 
   return (
     <div className="App">
@@ -34,7 +30,7 @@ function App() {
       <Container>
         <Row>
           <Col>
-            {robots.map((robot) => (
+            {storedRobots.map((robot) => (
               <Robot
                 key={robot.id}
                 id={robot.id}
@@ -42,17 +38,14 @@ function App() {
                 visual_src={robot.visual_src}
                 visual_type={robot.visual_type}
                 parts={robot.parts}
-                onRobotSelected={setParts}
               />
             ))}
           </Col>
           <Col>
-            {parts.length > 0 && <PartList parts={parts}></PartList>}
+            <PartList></PartList>
           </Col>
         </Row>
       </Container>
-
-      <p>{JSON.stringify(robots)}</p>
     </div>
   );
 }
