@@ -239,7 +239,7 @@ Others components : [https://react-bootstrap.github.io/components/alerts](https:
 
 ## Fetch data
 
-A REST api is availaible at the following URL : [https://pure-temple-56604.herokuapp.com](https://www.robots.loiclegoff.com/)
+A REST api is availaible at the following URL : https://www.robots.loiclegoff.com/
 
 For this step you can use these endpoints:
 
