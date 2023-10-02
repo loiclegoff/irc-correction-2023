@@ -1,6 +1,5 @@
 import { Card } from 'react-bootstrap';
-import { Image } from './Image';
-import { Video } from './Video';
+import { Visual } from '../visual/Visual';
 
 export function Robot(props) {
   function handleOnClick() {
@@ -16,11 +15,11 @@ export function Robot(props) {
       <Card.Body>
         <Card.Title>{props.title}</Card.Title>
         <Card.Text>ID {props.id}</Card.Text>
-        {props.visual_type === 'video' ? (
-          <Video src={props.visual_src} />
-        ) : (
-          <Image src={props.visual_src} title={props.title} />
-        )}
+        <Visual
+          src={props.visual_src}
+          title={props.title}
+          type={props.visual_type}
+        />
       </Card.Body>
     </Card>
   );

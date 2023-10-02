@@ -20,7 +20,6 @@ export function PartList(props) {
   console.log(allParts);
   return (
     <div>
-      <h1>PartList</h1>
       {allParts
         .filter((part) => props.parts.includes(part.id))
         .map((part) => (
