@@ -139,7 +139,7 @@ npm run dev
 
 # Step 0 : first app
 
-Open `public/index.html` and add bootstrap import to use css rules
+Open `index.html` and add bootstrap import to use css rules
 
 ```html
 <head>
@@ -228,7 +228,7 @@ Replace your elements that use bootstrap classnames with the correct component i
 import { Button } from 'react-bootstrap';
 ```
 
-Others components : https://react-bootstrap.github.io/components/alerts
+Others components : [https://react-bootstrap.github.io/components/alerts](https://react-bootstrap.netlify.app/docs/components/alerts)
 
 ## Correction proposal
 
@@ -239,7 +239,7 @@ Others components : https://react-bootstrap.github.io/components/alerts
 
 ## Fetch data
 
-A REST api is availaible at the following URL : https://pure-temple-56604.herokuapp.com
+A REST api is availaible at the following URL : [https://pure-temple-56604.herokuapp.com](https://www.robots.loiclegoff.com/)
 
 For this step you can use these endpoints:
 
